@@ -6,6 +6,22 @@ Static Next.js site deployed to GitHub Pages.
 - Home page: client-side filter/search over the full dataset
 - Detail pages: SSG via `generateStaticParams` at `/items/[id]/`
 
+## Setup
+
+This repo uses a git submodule at `vendor/strongs` for the upstream [openscriptures/strongs](https://github.com/openscriptures/strongs) data.
+
+To initialize:
+```bash
+git submodule update --init --recursive
+
+```
+To update:
+```bash
+git submodule update --remote vendor/strongs
+git add vendor/strongs
+git commit -m "Update strongs submodule"
+```
+
 ## Local dev
 
 ```bash

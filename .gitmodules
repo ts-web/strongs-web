@@ -1,0 +1,3 @@
+[submodule "vendor/strongs"]
+	path = vendor/strongs
+	url = https://github.com/openscriptures/strongs.git

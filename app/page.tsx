@@ -1,6 +1,6 @@
-import items from '@/data/items.json';
+import index from '@/data/index.json';
 import SearchBrowser from './SearchBrowser';
 
 export default function HomePage() {
-  return <SearchBrowser items={items} />;
+  return <SearchBrowser items={index} />;
 }

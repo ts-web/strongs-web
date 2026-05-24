@@ -4,10 +4,9 @@ import { useMemo, useState } from 'react';
 
 type Item = {
   id: string;
-  title: string;
-  transliteration: string;
+  lemma: string;
+  xlit: string;
   gloss: string;
-  description: string;
 };
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
@@ -17,9 +16,9 @@ export default function SearchBrowser({ items }: { items: Item[] }) {
 
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    if (!needle) return items;
+    if (!needle) return items.slice(0, 200);
     return items.filter((it) =>
-      [it.id, it.title, it.transliteration, it.gloss, it.description]
+      [it.id, it.lemma, it.xlit, it.gloss]
         .join(' ')
         .toLowerCase()
         .includes(needle),
@@ -36,15 +35,17 @@ export default function SearchBrowser({ items }: { items: Item[] }) {
         onChange={(e) => setQ(e.target.value)}
         autoFocus
       />
-      <p className="item-meta">{filtered.length} of {items.length} entries</p>
+      <p className="item-meta">
+        {q ? `${filtered.length} of ${items.length}` : `Showing first ${filtered.length} of ${items.length}`}
+      </p>
       <ul className="item-list">
         {filtered.map((it) => (
           <li key={it.id}>
             <a href={`${basePath}/items/${it.id}/`}>
-              {it.id} — {it.title}
+              {it.id} — {it.lemma}
             </a>
             <div className="item-meta">
-              <em>{it.transliteration}</em> · {it.gloss}
+              <em>{it.xlit}</em> · {it.gloss}
             </div>
           </li>
         ))}

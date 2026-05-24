@@ -5,3 +5,7 @@ out/
 .DS_Store
 .env*.local
 next-env.d.ts
+
+# Build artifacts from scripts/extract.ts
+data/entries.json
+data/index.json

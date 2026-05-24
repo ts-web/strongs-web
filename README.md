@@ -6,7 +6,14 @@ Static Next.js site deployed to GitHub Pages.
 - Home page: client-side filter/search over the full dataset
 - Detail pages: SSG via `generateStaticParams` at `/items/[id]/`
 
-## Setup
+## Install
+
+Bun:
+```sh
+curl -fsSL https://bun.sh/install | bash
+```
+
+## Setup submodule
 
 This repo uses a git submodule at `vendor/strongs` for the upstream [openscriptures/strongs](https://github.com/openscriptures/strongs) data.
 
@@ -25,14 +32,14 @@ git commit -m "Update strongs submodule"
 ## Local dev
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## Build (static export)
 
 ```bash
-npm run build
+bun run build
 # output in ./out
 ```
 

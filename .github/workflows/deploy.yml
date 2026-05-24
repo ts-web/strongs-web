@@ -21,14 +21,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+      - uses: oven-sh/setup-bun@v2
       - name: Install
-        run: npm ci
+        run: bun install
       - name: Build
-        run: npm run build
+        run: bun run build
       - name: Add .nojekyll
         run: touch out/.nojekyll
       - uses: actions/configure-pages@v5
